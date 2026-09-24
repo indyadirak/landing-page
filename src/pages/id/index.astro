@@ -1,0 +1,55 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { copy } from '../../i18n/id';
+import { properties, site } from '../../types/site';
+
+const locale = 'id' as const;
+---
+
+<BaseLayout {...copy} {locale}>
+  <main class="page-content">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-meta">
+        <span class="eyebrow">{copy.hero.eyebrow}</span>
+        <span class="availability"><span class="availability-dot" aria-hidden="true"></span>{copy.hero.availability}</span>
+      </div>
+      <h1 id="hero-title">Indy Adira<br /><em> Khalfani.</em></h1>
+      <p class="hero-role">{copy.hero.role}</p>
+      <p class="hero-bio">{copy.hero.bio}</p>
+      <a class="primary-link" href="https://portofolio.indyadirak.my.id" rel="noopener noreferrer">
+        <span>{copy.hero.cta}</span><span aria-hidden="true">↗</span>
+      </a>
+    </section>
+    <section class="content-section capabilities" aria-labelledby="capabilities-title">
+      <h2 id="capabilities-title">{copy.capabilities.title}</h2>
+      <div class="capability-list">
+        {copy.capabilities.items.map((item) => (
+          <div class="capability-item">
+            <h3>{item.name}</h3>
+            <p>{item.tools}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+    <section class="content-section pillars" aria-labelledby="pillars-title">
+      <h2 id="pillars-title">{copy.pillars.title}</h2>
+      {['portfolio', 'blog', 'wiki', 'tools'].map((key) => {
+        const property = properties.find((item) => item.key === key)!;
+        const item = copy.pillars[key as keyof typeof copy.pillars];
+        return <a class:list={['pillar', property.key === 'portfolio' && 'pillar-featured', property.status === 'coming-soon' && 'pillar-disabled']} href={property.status === 'live' ? property.href : undefined} rel="noopener noreferrer">
+          <span class="pillar-heading"><strong>{property.key}</strong><small>{property.key !== 'portfolio' && `· ${property.language}`}</small></span>
+          <span class="pillar-description">{item.description}</span>
+          <span class="pillar-action">{item.action} {property.status === 'live' && <span aria-hidden="true">↗</span>}</span>
+        </a>;
+      })}
+    </section>
+    <section class="content-section selected-links" aria-labelledby="links-title">
+      <h2 id="links-title">{copy.links.title}</h2>
+      <div class="link-row">
+        <a href={site.github} target="_blank" rel="noopener noreferrer">{copy.links.github} <span aria-hidden="true">↗</span></a>
+        <a href={site.linkedin} target="_blank" rel="noopener noreferrer">{copy.links.linkedin} <span aria-hidden="true">↗</span></a>
+        <a href={`mailto:${site.email}`}>{copy.links.email} <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+</BaseLayout>

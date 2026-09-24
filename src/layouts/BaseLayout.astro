@@ -1,0 +1,88 @@
+---
+import type { Locale } from '../types/site';
+import { site } from '../types/site';
+import '../styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title: string;
+  description: string;
+  nav: {
+    portfolio: string;
+    blog: string;
+    wiki: string;
+    tools: string;
+    switchLanguage: string;
+  };
+  hero: {
+    eyebrow: string;
+    role: string;
+    bio: string;
+    availability: string;
+    cta: string;
+  };
+}
+
+const { locale, title, description, nav, hero } = Astro.props;
+const alternateLocale = locale === 'id' ? 'en' : 'id';
+const currentPath = Astro.url.pathname.replace(/^\/(id|en)/, '') || '/';
+const alternateUrl = `/${alternateLocale}${currentPath}`;
+const portfolio = 'https://portofolio.indyadirak.my.id';
+const blog = 'https://blog.indyadirak.my.id';
+const wiki = 'https://wiki.indyadirak.my.id';
+const tools = 'https://tools.indyadirak.my.id';
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={Astro.url} />
+    <link rel="alternate" hreflang={locale} href={Astro.url} />
+    <link rel="alternate" hreflang={alternateLocale} href={new URL(alternateUrl, Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/id/', Astro.site)} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={Astro.url} />
+    <meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'id' ? 'en_US' : 'id_ID'} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <title>{title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: site.name,
+      jobTitle: site.role,
+      url: Astro.site,
+      sameAs: [site.github, site.linkedin],
+    })} />
+  </head>
+  <body>
+    <div class="site-shell">
+      <header class="site-header">
+        <a class="wordmark" href={`/${locale}/`} aria-label={`${site.name} home`}>
+          <span>{site.name}</span>
+          <span class="wordmark-mark" aria-hidden="true">↗</span>
+        </a>
+        <nav aria-label="Primary navigation">
+          <a href={portfolio} rel="noopener noreferrer">{nav.portfolio}</a>
+          <a href={blog} rel="noopener noreferrer">{nav.blog}</a>
+          <a href={wiki} rel="noopener noreferrer">{nav.wiki}</a>
+          <a href={tools} rel="noopener noreferrer">{nav.tools}</a>
+          <a class="language-switcher" href={alternateUrl} lang={alternateLocale}>{nav.switchLanguage}</a>
+        </nav>
+      </header>
+      <slot />
+      <footer class="site-footer">
+        <span>© 2026 {site.name}</span>
+      </footer>
+    </div>
+  </body>
+</html>
