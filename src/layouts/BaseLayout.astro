@@ -1,6 +1,6 @@
 ---
 import type { Locale } from '../types/site';
-import { site } from '../types/site';
+import { properties, site } from '../types/site';
 import '../styles/global.css';
 
 interface Props {
@@ -13,6 +13,7 @@ interface Props {
     blog: string;
     wiki: string;
     tools: string;
+    soon: string;
     switchLanguage: string;
   };
   hero: {
@@ -30,10 +31,12 @@ const canonical = canonicalUrl ?? Astro.url;
 const alternateLocale = locale === 'id' ? 'en' : 'id';
 const currentPath = Astro.url.pathname.replace(/^\/(id|en)/, '') || '/';
 const alternateUrl = `/${alternateLocale}${currentPath}`;
-const portfolio = 'https://portofolio.indyadirak.my.id';
-const blog = 'https://blog.indyadirak.my.id';
-const wiki = 'https://wiki.indyadirak.my.id';
-const tools = 'https://tools.indyadirak.my.id';
+const navLabels = {
+  portfolio: nav.portfolio,
+  blog: nav.blog,
+  wiki: nav.wiki,
+  tools: nav.tools,
+} as const;
 ---
 
 <!doctype html>
@@ -76,10 +79,13 @@ const tools = 'https://tools.indyadirak.my.id';
         <span class="wordmark-mark" aria-hidden="true">↗</span>
       </a>
       <nav aria-label="Primary navigation">
-        <a href={portfolio} rel="noopener noreferrer">{nav.portfolio}</a>
-        <a href={blog} rel="noopener noreferrer">{nav.blog}</a>
-        <a href={wiki} rel="noopener noreferrer">{nav.wiki}</a>
-        <a href={tools} rel="noopener noreferrer">{nav.tools}</a>
+        {properties.map((property) =>
+          property.status === 'live' ? (
+            <a href={property.href} rel="noopener noreferrer">{navLabels[property.key]}</a>
+          ) : (
+            <span class="nav-disabled" aria-disabled="true" title={nav.soon}>{navLabels[property.key]} <small>{nav.soon}</small></span>
+          )
+        )}
         <a class="language-switcher" href={alternateUrl} lang={alternateLocale}>{nav.switchLanguage}</a>
       </nav>
     </header>

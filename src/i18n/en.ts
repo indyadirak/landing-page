@@ -10,6 +10,7 @@ export const copy = {
     blog: 'Blog',
     wiki: 'Wiki',
     tools: 'Tools',
+    soon: 'coming soon',
     switchLanguage: 'ID',
   },
   hero: {
