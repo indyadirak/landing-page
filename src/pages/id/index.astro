@@ -1,57 +1,11 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomeContent from '../../components/HomeContent.astro';
 import { copy } from '../../i18n/id';
-import { properties, site } from '../../types/site';
 
 const locale = 'id' as const;
 ---
 
 <BaseLayout {...copy} {locale}>
-  <main class="page-content">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-meta">
-        <span class="eyebrow">{copy.hero.eyebrow}</span>
-        <span class="availability"><span class="availability-dot" aria-hidden="true"></span>{copy.hero.availability}</span>
-      </div>
-      <h1 id="hero-title">Indy Adira<br /><em> Khalfani.</em></h1>
-      <p class="hero-rotating"><span class="dash" aria-hidden="true">—</span><span class="rotator" data-rotator data-words={JSON.stringify(copy.hero.rotating)}>{copy.hero.rotating[0]}</span><span class="sr-only">{copy.hero.role}</span></p>
-      <p class="hero-bio">{copy.hero.bio}</p>
-      <a class="primary-link" href="https://portofolio.indyadirak.my.id" rel="noopener noreferrer">
-        <span>{copy.hero.cta}</span><span class="arrow" aria-hidden="true">↗</span>
-      </a>
-    </section>
-    <section class="content-section capabilities reveal" aria-labelledby="capabilities-title">
-      <h2 id="capabilities-title">{copy.capabilities.title}</h2>
-      <div class="capability-list">
-        {copy.capabilities.items.map((item, index) => (
-          <div class="capability-item">
-            <span class="capability-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
-            <h3>{item.name}</h3>
-            <p class="capability-context">{item.context}</p>
-            <p>{item.tools}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-    <section class="content-section pillars reveal" aria-labelledby="pillars-title">
-      <h2 id="pillars-title">{copy.pillars.title}</h2>
-      {['portfolio', 'blog', 'wiki', 'tools'].map((key) => {
-        const property = properties.find((item) => item.key === key)!;
-        const item = copy.pillars[key as keyof typeof copy.pillars];
-        return <a class:list={['pillar', property.key === 'portfolio' && 'pillar-featured', property.status === 'coming-soon' && 'pillar-disabled']} href={property.status === 'live' ? property.href : undefined} rel={property.status === 'live' ? 'noopener noreferrer' : undefined} aria-disabled={property.status === 'coming-soon' ? 'true' : undefined}>
-          <span class="pillar-heading"><strong>{property.key}</strong>{property.key !== 'portfolio' && <small>{`· ${property.language}`}</small>}</span>
-          <span class="pillar-description">{item.description}</span>
-          <span class="pillar-action">{item.action} {property.status === 'live' && <span aria-hidden="true">↗</span>}</span>
-        </a>;
-      })}
-    </section>
-    <section class="content-section selected-links reveal" aria-labelledby="links-title">
-      <h2 id="links-title">{copy.links.title}</h2>
-      <div class="link-row">
-        <a href={site.github} target="_blank" rel="noopener noreferrer"><span>{copy.links.github}</span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a href={site.linkedin} target="_blank" rel="noopener noreferrer"><span>{copy.links.linkedin}</span><span class="arrow" aria-hidden="true">↗</span></a>
-        <a href={`mailto:${site.email}`}><span>{copy.links.email}</span><span class="arrow" aria-hidden="true">↗</span></a>
-      </div>
-    </section>
-  </main>
+  <HomeContent copy={copy} />
 </BaseLayout>
