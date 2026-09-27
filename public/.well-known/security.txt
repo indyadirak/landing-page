@@ -1,0 +1,4 @@
+Contact: mailto:me@indyadirak.my.id
+Expires: 2027-09-27T00:00:00.000Z
+Preferred-Languages: id, en
+Canonical: https://indyadirak.my.id/.well-known/security.txt

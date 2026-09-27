@@ -1,0 +1,12 @@
+/* AUTHOR */
+Name: Indy Adira Khalfani
+Role: Security Researcher & IT Systems Enthusiast
+GitHub: https://github.com/indyadirak
+LinkedIn: https://www.linkedin.com/in/indyadirak
+Contact: me@indyadirak.my.id
+
+/* SITE */
+Last update: 2026/09/27
+Languages: Indonesian, English
+Standards: HTML, CSS
+Components: Astro (static site, no backend, no database)
