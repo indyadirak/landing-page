@@ -13,7 +13,7 @@ Proyek ini adalah landing page statis (Astro, tanpa backend, database, atau logi
 | `main` / terbaru (`0.1.x`) | ✅ Didukung — terima laporan & patch keamanan |
 | Release lama / fork tidak terawat | ❌ Tidak didukung — silakan update ke `main` terbaru |
 
-Dependency utama: `astro >= 7.3.4`. Update dependency otomatis via Dependabot (mingguan).
+Dependency utama: `astro >= 7.3.5`. Update dependency otomatis via Dependabot (mingguan).
 
 ### Cara Melapor
 
@@ -82,7 +82,7 @@ This project is a static landing page (Astro, no backend, database, or login).
 | `main` / latest (`0.1.x`) | ✅ Supported — accepts security reports & patches |
 | Old releases / unmaintained forks | ❌ Unsupported — please update to latest `main` |
 
-Main dependency: `astro >= 7.3.4`. Automated updates via Dependabot (weekly).
+Main dependency: `astro >= 7.3.5`. Automated updates via Dependabot (weekly).
 
 ### Reporting a Vulnerability
 
