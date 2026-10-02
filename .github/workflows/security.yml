@@ -1,0 +1,58 @@
+name: Security check
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    - cron: "0 0 * * 1" # mingguan, selaras dengan Dependabot
+  workflow_dispatch:
+
+jobs:
+  audit-and-headers:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - name: Install (ci)
+        run: npm ci
+
+      - name: npm audit (fail on moderate+)
+        run: npm audit --audit-level=moderate
+
+      - name: Required security files exist
+        run: |
+          test -f SECURITY.md || (echo "SECURITY.md hilang" && exit 1)
+          test -f public/_headers || (echo "public/_headers hilang" && exit 1)
+          test -f public/.well-known/security.txt || (echo "security.txt hilang" && exit 1)
+
+      - name: Check _headers contains required headers
+        run: |
+          for h in "Strict-Transport-Security" "X-Frame-Options" "X-Content-Type-Options" "Referrer-Policy" "Permissions-Policy" "Content-Security-Policy" "Cross-Origin-Opener-Policy" "Cross-Origin-Resource-Policy"; do
+            grep -q "$h" public/_headers || (echo "Header $h hilang di public/_headers" && exit 1)
+          done
+          echo "Semua header wajib ada."
+
+      - name: Check security.txt Expires > 30 hari
+        run: |
+          python3 - <<'EOF'
+          import re, sys
+          from datetime import datetime, timezone
+          txt = open("public/.well-known/security.txt").read()
+          m = re.search(r"^Expires:\s*(.+)$", txt, re.M)
+          assert m, "Expires tidak ditemukan di security.txt"
+          exp = datetime.fromisoformat(m.group(1).strip().replace("Z", "+00:00"))
+          sisa = (exp - datetime.now(timezone.utc)).days
+          print(f"Expires: {exp.isoformat()} ({sisa} hari lagi)")
+          assert sisa > 30, f"security.txt kedaluwarsa dalam {sisa} hari — segera rotasi!"
+          assert "Contact:" in txt, "Contact hilang"
+          assert "Canonical:" in txt, "Canonical hilang"
+          EOF
+
+      - name: Build (pastikan tidak merusak CSP/headers)
+        run: npm run build
