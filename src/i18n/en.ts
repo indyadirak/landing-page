@@ -12,6 +12,7 @@ export const copy = {
     tools: 'Tools',
     soon: 'coming soon',
     switchLanguage: 'ID',
+    backToTop: 'Back to top',
   },
   hero: {
     eyebrow: '~/personal-hub · v2026',
@@ -36,5 +37,13 @@ export const copy = {
     wiki: { description: 'Personal knowledge base on tools, systems, and security references. (Indonesian only)', action: 'Coming soon' },
     tools: { description: 'A collection of tools and security utilities I build and use.', action: 'Coming soon' },
   },
-  links: { title: 'Selected links', github: 'GitHub', linkedin: 'LinkedIn', email: 'Email' },
+  links: {
+    title: 'Selected links',
+    github: 'GitHub',
+    linkedin: 'LinkedIn',
+    email: 'Email',
+    githubHandle: 'github.com/indyadirak',
+    linkedinHandle: 'linkedin.com/in/indyadirak',
+    emailHandle: 'me@indyadirak.my.id',
+  },
 } as const;
