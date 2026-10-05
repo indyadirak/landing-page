@@ -12,7 +12,7 @@ Pintu masuk ke empat properti: Portfolio, Blog, Wiki, dan Tools.
 - **Astro >= 7.3.5** (static site generator, output `dist/`) — tanpa backend, database, login, atau framework JS besar
 - **Bilingual i18n routing bawaan Astro**: route terpisah `/id/` dan `/en/` + language switcher di header
 - HTML/CSS + satu file JS eksternal (`public/scripts/site.js`: rotator peran, reveal-on-scroll, keduanya progressive enhancement)
-- Tipografi via Google Fonts (Inter Tight + Inter + JetBrains Mono, diizinkan eksplisit di CSP) + `og-image.png` untuk Open Graph/Twitter card
+- Tipografi self-hosted (`public/fonts/`: Inter Tight + Inter + JetBrains Mono, woff2 latin) — tanpa request pihak ketiga, CSP `font-src 'self'` penuh + `og-image.png` untuk Open Graph/Twitter card
 - Deploy: **Cloudflare Pages** dari GitHub (`npm run build` → `dist/`)
 
 ## Struktur Project
@@ -41,7 +41,8 @@ public/
   sitemap.xml
   humans.txt
   scripts/site.js      # JS progresif (rotator + reveal), tanpa framework
-  _headers             # security headers (Cloudflare Pages, termasuk CSP + izin Google Fonts)
+  fonts/               # woff2 self-hosted (Inter Tight, Inter, JetBrains Mono)
+  _headers             # security headers (Cloudflare Pages, CSP ketat tanpa pengecualian eksternal)
   .well-known/
     security.txt       # RFC 9116 — rotate Expires sebelum 2027-09-27
 .github/
@@ -83,7 +84,7 @@ Kontak: GitHub `indyadirak`, LinkedIn `indyadirak`, email `me@indyadirak.my.id` 
 ## Keamanan
 
 - Kebijakan pelaporan: `SECURITY.md` (ID/EN) — lapor via `me@indyadirak.my.id`, jangan via public issue
-- Headers via `public/_headers`: HSTS, `X-Frame-Options: DENY`, CSP ketat (pengecualian minimal untuk Google Fonts), `nosniff`, `Permissions-Policy`, COOP/CORP
+- Headers via `public/_headers`: HSTS, `X-Frame-Options: DENY`, CSP ketat tanpa domain eksternal (font self-hosted), `nosniff`, `Permissions-Policy`, COOP/CORP
 - `security.txt` (RFC 9116), Dependabot mingguan (npm + github-actions), workflow `security.yml` (audit + cek headers + build, Node 22)
 
 ## Catatan Desain
