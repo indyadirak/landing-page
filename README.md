@@ -96,10 +96,7 @@ Referensi visual pihak ketiga hanya dipakai sebagai acuan prinsip — tidak disa
 
 ## Lisensi
 
-Lisensi ganda:
-
-- **Kode program** (komponen Astro, modul TypeScript, file konfigurasi, build script): [MIT](LICENSE-MIT) © 2026 Indy Adira Khalfani
-- **Konten** (tulisan ID/EN, gambar, desain visual, identitas brand): [CC BY-NC 4.0](LICENSE-CONTENT) — boleh dibagikan/diadaptasi dengan atribusi, tidak untuk keperluan komersial tanpa izin tertulis (`me@indyadirak.my.id`)
+[MIT](LICENSE) © 2026 Indy Adira Khalfani.
 
 ## Keterbukaan AI
 
