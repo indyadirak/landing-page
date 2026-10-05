@@ -93,3 +93,16 @@ Inter Tight untuk display/heading, Inter untuk body, JetBrains Mono hanya label 
 `max-width 820px`, hairline tipis, motion minimal (nonaktif bila `prefers-reduced-motion`), kontras teks ≥ WCAG AA,
 tanpa elemen portfolio utama (project cards, dashboard, terminal animation, login).
 Referensi visual pihak ketiga hanya dipakai sebagai acuan prinsip — tidak disalin.
+
+## Lisensi
+
+Lisensi ganda:
+
+- **Kode program** (komponen Astro, modul TypeScript, file konfigurasi, build script): [MIT](LICENSE-MIT) © 2026 Indy Adira Khalfani
+- **Konten** (tulisan ID/EN, gambar, desain visual, identitas brand): [CC BY-NC 4.0](LICENSE-CONTENT) — boleh dibagikan/diadaptasi dengan atribusi, tidak untuk keperluan komersial tanpa izin tertulis (`me@indyadirak.my.id`)
+
+## Keterbukaan AI
+
+Repositori ini dikembangkan dengan bantuan AI (coding assistant), termasuk draf kode, copy, dan dokumen.
+Seluruh output AI dikurasi, diuji (`npm run build`, `npm audit`), dan diverifikasi manual oleh penulis sebelum di-commit.
+Tanggung jawab atas isi akhir ada pada pemegang hak cipta di atas.
