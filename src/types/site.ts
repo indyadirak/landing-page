@@ -21,7 +21,7 @@ export const site = {
 export const properties: Property[] = [
   {
     key: 'portfolio',
-    href: 'https://portofolio.indyadirak.my.id',
+    href: 'https://portofolio.indyadirak.com',
     language: 'ID',
     status: 'live',
   },

@@ -66,7 +66,7 @@ npm audit     # cek vulnerability (harus 0)
 
 | Properti | URL | Status |
 |---|---|---|
-| Portfolio | `portofolio.indyadirak.my.id` | live |
+| Portfolio | `portofolio.indyadirak.com` | live |
 | Blog | `blog.indyadirak.my.id` | live |
 | Wiki | `wiki.indyadirak.my.id` | coming soon |
 | Tools | `tools.indyadirak.my.id` | coming soon |
