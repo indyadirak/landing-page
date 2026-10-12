@@ -18,7 +18,7 @@
 | Domain | Fungsi | Identitas visual | Bahasa |
 |---|---|---|---|
 | `indyadirak.my.id` | Landing page / personal hub (halaman ini) | Editorial, bersih, personal | Bilingual (ID/EN) |
-| `portofolio.indyadirak.my.id` | Portfolio utama — project, certificates, admin CMS | Cyber/security, lebih teknis | Bilingual (ID/EN) |
+| `portofolio.indyadirak.com` | Portfolio utama — project, certificates, admin CMS | Cyber/security, lebih teknis | Bilingual (ID/EN) |
 | `blog.indyadirak.my.id` | Blog teknis | — | Indonesia |
 | `wiki.indyadirak.my.id` | Knowledge base | — | Indonesia |
 | `tools.indyadirak.my.id` | Tools / security utilities | — | English |
