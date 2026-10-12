@@ -98,7 +98,7 @@ a:focus-visible {
 }
 
 .site-shell {
-  width: min(100% - 2.5rem, 820px);
+  width: min(100% - 2.5rem, 1080px);
   margin: 0 auto;
   flex: 1;
   display: flex;
@@ -691,7 +691,7 @@ html.js .reveal.is-visible {
 
 @media (max-width: 640px) {
   .site-shell {
-    width: min(100% - 2rem, 820px);
+    width: min(100% - 2rem, 1080px);
   }
 
   .site-header {
