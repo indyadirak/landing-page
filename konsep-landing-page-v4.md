@@ -17,11 +17,11 @@
 
 | Domain | Fungsi | Identitas visual | Bahasa |
 |---|---|---|---|
-| `indyadirak.my.id` | Landing page / personal hub (halaman ini) | Editorial, bersih, personal | Bilingual (ID/EN) |
+| `indyadirak.com` | Landing page / personal hub (halaman ini) | Editorial, bersih, personal | Bilingual (ID/EN) |
 | `portofolio.indyadirak.com` | Portfolio utama — project, certificates, admin CMS | Cyber/security, lebih teknis | Bilingual (ID/EN) |
 | `blog.indyadirak.my.id` | Blog teknis | — | Indonesia |
-| `wiki.indyadirak.my.id` | Knowledge base | — | Indonesia |
-| `tools.indyadirak.my.id` | Tools / security utilities | — | English |
+| `wiki.indyadirak.com` | Knowledge base | — | Indonesia |
+| `tools.indyadirak.com` | Tools / security utilities | — | English |
 
 Karena blog dan wiki hanya berbahasa Indonesia, sedangkan tools hanya berbahasa Inggris, deskripsi pilar untuk ketiganya di landing page **tetap diterjemahkan mengikuti bahasa aktif landing page** (ID/EN) — bukan bahasa isi subdomain-nya. Pertimbangkan menambahkan penanda kecil bahasa pada kartu pilar (misal label `ID` di Blog/Wiki, `EN` di Tools) supaya pengunjung tidak kaget saat pindah halaman.
 
@@ -150,10 +150,10 @@ Cloudflare Pages
 Markdown/config sederhana untuk konten, dipisah per bahasa (mis. content/id/, content/en/)
 Tanpa Supabase, tanpa backend, tanpa login
 ```
-Deploy: GitHub repo → Cloudflare Pages → `indyadirak.my.id`
+Deploy: GitHub repo → Cloudflare Pages → `indyadirak.com`
 
 **Pendekatan bilingual: route terpisah + toggle UI (kombinasi, bukan pilih salah satu)**
-- Struktur URL tetap route terpisah: `indyadirak.my.id/id/` dan `indyadirak.my.id/en/` (atau `/id/` sebagai default di root) — ini yang memberi manfaat SEO: tiap bahasa punya URL sendiri yang bisa diindex, dengan `hreflang` saling menaut.
+- Struktur URL tetap route terpisah: `indyadirak.com/id/` dan `indyadirak.com/en/` (atau `/id/` sebagai default di root) — ini yang memberi manfaat SEO: tiap bahasa punya URL sendiri yang bisa diindex, dengan `hreflang` saling menaut.
 - Language switcher di header tetap ada sebagai tombol/toggle — secara pengalaman pengguna terasa seperti "toggle instan", tapi di baliknya dia mengarahkan ke route bahasa lain, bukan mengganti teks in-place lewat JS tanpa berpindah URL.
 - Astro i18n routing bawaan mendukung pola ini langsung, jadi tidak perlu memilih salah satu — keduanya berjalan bersamaan.
 

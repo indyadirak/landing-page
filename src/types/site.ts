@@ -33,13 +33,13 @@ export const properties: Property[] = [
   },
   {
     key: 'wiki',
-    href: 'https://wiki.indyadirak.my.id',
+    href: 'https://wiki.indyadirak.com',
     language: 'ID',
     status: 'coming-soon',
   },
   {
     key: 'tools',
-    href: 'https://tools.indyadirak.my.id',
+    href: 'https://tools.indyadirak.com',
     language: 'EN',
     status: 'coming-soon',
   },
