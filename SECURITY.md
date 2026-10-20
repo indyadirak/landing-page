@@ -22,7 +22,7 @@ Dependency utama: `astro >= 7.3.5`. Update dependency otomatis via Dependabot (m
 Lapor melalui salah satu kanal ini:
 
 1. **Email:** `me@indyadirak.my.id` — subjek `[SECURITY] <judul singkat>`
-2. **Sesuai RFC 9116:** https://indyadirak.my.id/.well-known/security.txt
+2. **Sesuai RFC 9116:** https://indyadirak.com/.well-known/security.txt
 
 Sertakan dalam laporan:
 
@@ -42,7 +42,7 @@ Yang akan Anda terima:
 
 **Dalam cakupan:**
 
-- `indyadirak.my.id` dan `id/` / `en/` (XSS, open redirect, clickjacking, bypass CSP/headers, mixed content, kebocoran PII, supply-chain via `npm`)
+- `indyadirak.com` dan `id/` / `en/` (XSS, open redirect, clickjacking, bypass CSP/headers, mixed content, kebocoran PII, supply-chain via `npm`)
 - Konfigurasi keamanan di repo ini: `public/_headers`, `public/.well-known/security.txt`, `public/robots.txt`, workflow GitHub Actions / Cloudflare Pages
 
 **Di luar cakupan (mohon tidak dilaporkan sebagai vuln repo ini):**
@@ -111,7 +111,7 @@ What to expect:
 
 **In scope:**
 
-- `indyadirak.my.id` and `id/` / `en/` (XSS, open redirect, clickjacking, CSP/header bypass, mixed content, PII leakage, supply-chain via `npm`)
+- `indyadirak.com` and `id/` / `en/` (XSS, open redirect, clickjacking, CSP/header bypass, mixed content, PII leakage, supply-chain via `npm`)
 - Security config in this repo: `public/_headers`, `public/.well-known/security.txt`, `public/robots.txt`, GitHub Actions / Cloudflare Pages workflows
 
 **Out of scope (please do not report as a vuln in this repo):**

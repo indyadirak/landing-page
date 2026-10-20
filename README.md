@@ -1,11 +1,11 @@
-# Personal Hub — indyadirak.my.id
+# Personal Hub — indyadirak.com
 
 Landing page / personal hub statis untuk **Indy Adira Khalfani** (Security Researcher & IT Systems Enthusiast).
 Pintu masuk ke empat properti: Portfolio, Blog, Wiki, dan Tools.
 
-- Production: `https://indyadirak.my.id`
-- Indonesia: `https://indyadirak.my.id/id/`
-- English: `https://indyadirak.my.id/en/`
+- Production: `https://indyadirak.com`
+- Indonesia: `https://indyadirak.com/id/`
+- English: `https://indyadirak.com/en/`
 
 ## Tech Stack
 
@@ -68,8 +68,8 @@ npm audit     # cek vulnerability (harus 0)
 |---|---|---|
 | Portfolio | `portofolio.indyadirak.com` | live |
 | Blog | `blog.indyadirak.my.id` | live |
-| Wiki | `wiki.indyadirak.my.id` | coming soon |
-| Tools | `tools.indyadirak.my.id` | coming soon |
+| Wiki | `wiki.indyadirak.com` | coming soon |
+| Tools | `tools.indyadirak.com` | coming soon |
 
 Kontak: GitHub `indyadirak`, LinkedIn `indyadirak`, email `me@indyadirak.my.id` (alias publik).
 
@@ -78,7 +78,7 @@ Kontak: GitHub `indyadirak`, LinkedIn `indyadirak`, email `me@indyadirak.my.id` 
 - Framework preset: Astro (atau None)
 - Build command: `npm run build`
 - Output directory: `dist`
-- Custom domain: `indyadirak.my.id`
+- Custom domain: `indyadirak.com`
 - Disarankan: paksa HTTPS + aktifkan Email Address Obfuscation.
 
 ## Keamanan
