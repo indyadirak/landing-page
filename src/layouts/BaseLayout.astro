@@ -93,7 +93,7 @@ const navLabels = {
           )
         )}
       </nav>
-      <a class="language-switcher" href={alternateUrl} lang={alternateLocale}>{nav.switchLanguage}</a>
+      <a class="language-switcher" href={new URL(alternateUrl, Astro.site).href} lang={alternateLocale}>{nav.switchLanguage}</a>
     </header>
     <div class="site-shell">
       <slot />

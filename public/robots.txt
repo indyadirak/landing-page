@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://indyadirak.my.id/sitemap.xml
+Sitemap: https://indyadirak.com/sitemap.xml
