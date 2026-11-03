@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "engines": {
-    "node": ">=22.22.0"
+    "node": ">=22.23.4"
   },
   "private": true,
   "scripts": {
@@ -12,6 +12,6 @@
     "preview": "astro preview"
   },
   "dependencies": {
-    "astro": ">=7.4.4"
+    "astro": "^7.4.4"
   }
 }

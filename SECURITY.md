@@ -13,7 +13,7 @@ Proyek ini adalah landing page statis (Astro, tanpa backend, database, atau logi
 | `main` / terbaru (`0.1.x`) | ✅ Didukung — terima laporan & patch keamanan |
 | Release lama / fork tidak terawat | ❌ Tidak didukung — silakan update ke `main` terbaru |
 
-Dependency utama: `astro >= 7.3.5`. Update dependency otomatis via Dependabot (mingguan).
+Dependency utama: `astro ^7.4.4` (minor/patch otomatis via Dependabot, major tetap ditinjau manual). Build memerlukan Node `>=22.23.4` (lihat `.nvmrc`).
 
 ### Cara Melapor
 
@@ -82,7 +82,7 @@ This project is a static landing page (Astro, no backend, database, or login).
 | `main` / latest (`0.1.x`) | ✅ Supported — accepts security reports & patches |
 | Old releases / unmaintained forks | ❌ Unsupported — please update to latest `main` |
 
-Main dependency: `astro >= 7.3.5`. Automated updates via Dependabot (weekly).
+Main dependency: `astro ^7.4.4` (minor/patch updates automated via Dependabot; majors reviewed manually). Builds require Node `>=22.23.4` (see `.nvmrc`).
 
 ### Reporting a Vulnerability
 
@@ -91,7 +91,7 @@ Main dependency: `astro >= 7.3.5`. Automated updates via Dependabot (weekly).
 Report via either channel:
 
 1. **Email:** `me@indyadirak.my.id` — subject `[SECURITY] <short title>`
-2. **Per RFC 9116:** https://indyadirak.my.id/.well-known/security.txt
+2. **Per RFC 9116:** https://indyadirak.com/.well-known/security.txt
 
 Please include:
 
@@ -133,7 +133,7 @@ We will **not** pursue good-faith researchers who comply with this policy.
 ### Security Practices in This Repo
 
 - 100% static site (`dist/`), no backend/login — minimal attack surface
-- Security headers via `public/_headers` (strict CSP, `X-Frame-Options: DENY`, `nosniff`, `Permissions-Policy`, etc.)
+- Security headers via `public/_headers` (strict CSP `default-src 'none'` + `frame-ancestors 'none'`, `X-Frame-Options: DENY`, `nosniff`, `X-XSS-Protection: 0`, `Permissions-Policy`, etc.)
 - HTTPS enforced + Email Obfuscation on Cloudflare Pages
 - `npm audit` must be clean (0 vulnerabilities) before merge; weekly Dependabot updates
 - RFC 9116 `security.txt` — rotate `Expires` before 2027-09-27

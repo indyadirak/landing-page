@@ -19,7 +19,7 @@
 |---|---|---|---|
 | `indyadirak.com` | Landing page / personal hub (halaman ini) | Editorial, bersih, personal | Bilingual (ID/EN) |
 | `portofolio.indyadirak.com` | Portfolio utama — project, certificates, admin CMS | Cyber/security, lebih teknis | Bilingual (ID/EN) |
-| `blog.indyadirak.my.id` | Blog teknis | — | Indonesia |
+| `blog.indyadirak.com` | Blog teknis | — | Indonesia |
 | `wiki.indyadirak.com` | Knowledge base | — | Indonesia |
 | `tools.indyadirak.com` | Tools / security utilities | — | English |
 

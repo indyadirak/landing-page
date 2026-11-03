@@ -8,15 +8,21 @@ on:
     - cron: "0 0 * * 1" # mingguan, selaras dengan Dependabot
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   audit-and-headers:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v7
-
-      - uses: actions/setup-node@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          node-version: 22
+          persist-credentials: false
+
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version-file: .nvmrc
           cache: npm
 
       - name: Install (ci)
@@ -33,10 +39,27 @@ jobs:
 
       - name: Check _headers contains required headers
         run: |
-          for h in "Strict-Transport-Security" "X-Frame-Options" "X-Content-Type-Options" "Referrer-Policy" "Permissions-Policy" "Content-Security-Policy" "Cross-Origin-Opener-Policy" "Cross-Origin-Resource-Policy"; do
+          for h in "Strict-Transport-Security" "X-Frame-Options" "X-Content-Type-Options" "X-XSS-Protection" "Referrer-Policy" "Permissions-Policy" "Content-Security-Policy" "Cross-Origin-Opener-Policy" "Cross-Origin-Resource-Policy"; do
             grep -q "$h" public/_headers || (echo "Header $h hilang di public/_headers" && exit 1)
           done
           echo "Semua header wajib ada."
+
+      - name: Check CSP is hardened
+        run: |
+          csp=$(grep '^  Content-Security-Policy:' public/_headers || true)
+          test -n "$csp" || (echo "CSP tidak ditemukan" && exit 1)
+          for bad in "'unsafe-inline'" "'unsafe-eval'" "default-src 'self'"; do
+            case "$csp" in
+              *"$bad"*) echo "CSP mengandung nilai tidak aman: $bad" && exit 1 ;;
+            esac
+          done
+          for required in "default-src 'none'" "frame-ancestors 'none'" "object-src 'none'" "base-uri 'none'" "form-action 'none'"; do
+            case "$csp" in
+              *"$required"*) ;;
+              *) echo "CSP tidak mengandung: $required" && exit 1 ;;
+            esac
+          done
+          echo "CSP hardened."
 
       - name: Check security.txt Expires > 30 hari
         run: |
@@ -52,6 +75,8 @@ jobs:
           assert sisa > 30, f"security.txt kedaluwarsa dalam {sisa} hari — segera rotasi!"
           assert "Contact:" in txt, "Contact hilang"
           assert "Canonical:" in txt, "Canonical hilang"
+          assert "Policy:" in txt, "Policy hilang"
+          assert "Canonical: https://indyadirak.com/.well-known/security.txt" in txt, "Canonical tidak sesuai domain produksi"
           EOF
 
       - name: Build (pastikan tidak merusak CSP/headers)

@@ -34,7 +34,7 @@ export const copy = {
     title: 'Direktori',
     portfolio: { description: 'Studi Kasus: Arsitektur jaringan tersegmentasi & keamanan firewall stateful (MikroTik).', action: 'Buka portfolio' },
     blog: { description: 'Tulisan teknis, CTF write-up, dan catatan troubleshooting.', action: 'Baca tulisan' },
-    wiki: { description: 'Knowledge base pribadi tentang tools, sistem, dan referensi keamanan.', action: 'Segera hadir' },
+    wiki: { description: 'Knowledge base pribadi tentang tools, sistem, dan referensi keamanan.', action: 'Buka wiki' },
     tools: { description: 'Kumpulan tools dan security utilities yang saya kembangkan/gunakan.', action: 'Segera hadir' },
   },
   links: {
