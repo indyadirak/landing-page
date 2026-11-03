@@ -27,7 +27,7 @@ export const properties: Property[] = [
   },
   {
     key: 'blog',
-    href: 'https://blog.indyadirak.my.id',
+    href: 'https://blog.indyadirak.com',
     language: 'ID',
     status: 'live',
   },
@@ -35,7 +35,7 @@ export const properties: Property[] = [
     key: 'wiki',
     href: 'https://wiki.indyadirak.com',
     language: 'ID',
-    status: 'coming-soon',
+    status: 'live',
   },
   {
     key: 'tools',

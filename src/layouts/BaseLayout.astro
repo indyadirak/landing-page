@@ -38,6 +38,17 @@ const navLabels = {
   wiki: nav.wiki,
   tools: nav.tools,
 } as const;
+
+// Escape "<" so static/config data can never break out of the JSON-LD
+// <script> block (e.g. a future value containing "</script>").
+const jsonLd = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  jobTitle: site.role,
+  url: Astro.site,
+  sameAs: [site.github, site.linkedin],
+}).replace(/</g, '\\u003c');
 ---
 
 <!doctype html>
@@ -49,14 +60,14 @@ const navLabels = {
     <meta name="theme-color" content="#0c1320" />
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <link rel="alternate" hreflang={locale} href={Astro.url} />
+    <link rel="alternate" hreflang={locale} href={canonical} />
     <link rel="alternate" hreflang={alternateLocale} href={new URL(alternateUrl, Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={new URL('/id/', Astro.site)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={Astro.url} />
+    <meta property="og:url" content={canonical} />
     <meta property="og:locale" content={locale === 'id' ? 'id_ID' : 'en_US'} />
     <meta property="og:locale:alternate" content={locale === 'id' ? 'en_US' : 'id_ID'} />
     <meta property="og:type" content="website" />
@@ -69,14 +80,7 @@ const navLabels = {
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'Person',
-      name: site.name,
-      jobTitle: site.role,
-      url: Astro.site,
-      sameAs: [site.github, site.linkedin],
-    })} />
+    <script type="application/ld+json" set:html={jsonLd} />
   </head>
   <body>
     <header class="site-header" id="top">

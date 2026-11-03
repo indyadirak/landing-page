@@ -2,3 +2,4 @@ Contact: mailto:me@indyadirak.my.id
 Expires: 2027-09-27T00:00:00.000Z
 Preferred-Languages: id, en
 Canonical: https://indyadirak.com/.well-known/security.txt
+Policy: https://github.com/indyadirak/landing-page/blob/main/SECURITY.md

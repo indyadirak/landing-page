@@ -9,7 +9,8 @@ Pintu masuk ke empat properti: Portfolio, Blog, Wiki, dan Tools.
 
 ## Tech Stack
 
-- **Astro >= 7.3.5** (static site generator, output `dist/`) — tanpa backend, database, login, atau framework JS besar
+- **Astro ^7.4.4** (static site generator, output `dist/`) — tanpa backend, database, login, atau framework JS besar
+- **Node.js >= 22.23.4** (lihat `.nvmrc`) — versi minimum yang didukung Astro 7.4.4; Cloudflare Pages mengikuti `.nvmrc` saat build
 - **Bilingual i18n routing bawaan Astro**: route terpisah `/id/` dan `/en/` + language switcher di header
 - HTML/CSS + satu file JS eksternal (`public/scripts/site.js`: rotator peran, reveal-on-scroll, keduanya progressive enhancement)
 - Tipografi self-hosted (`public/fonts/`: Inter Tight + Inter + JetBrains Mono, woff2 latin) — tanpa request pihak ketiga, CSP `font-src 'self'` penuh + `og-image.png` untuk Open Graph/Twitter card
@@ -20,7 +21,7 @@ Pintu masuk ke empat properti: Portfolio, Blog, Wiki, dan Tools.
 ```text
 src/
   pages/
-    index.astro        # redirect / → /id/
+    index.astro        # fallback / (canonical → /id/)
     404.astro          # halaman 404 bilingual
     id/index.astro     # halaman Bahasa Indonesia
     en/index.astro     # halaman English
@@ -67,8 +68,8 @@ npm audit     # cek vulnerability (harus 0)
 | Properti | URL | Status |
 |---|---|---|
 | Portfolio | `portofolio.indyadirak.com` | live |
-| Blog | `blog.indyadirak.my.id` | live |
-| Wiki | `wiki.indyadirak.com` | coming soon |
+| Blog | `blog.indyadirak.com` | live |
+| Wiki | `wiki.indyadirak.com` | live |
 | Tools | `tools.indyadirak.com` | coming soon |
 
 Kontak: GitHub `indyadirak`, LinkedIn `indyadirak`, email `me@indyadirak.my.id` (alias publik).
@@ -84,7 +85,7 @@ Kontak: GitHub `indyadirak`, LinkedIn `indyadirak`, email `me@indyadirak.my.id` 
 ## Keamanan
 
 - Kebijakan pelaporan: `SECURITY.md` (ID/EN) — lapor via `me@indyadirak.my.id`, jangan via public issue
-- Headers via `public/_headers`: HSTS, `X-Frame-Options: DENY`, CSP ketat tanpa domain eksternal (font self-hosted), `nosniff`, `Permissions-Policy`, COOP/CORP
+- Headers via `public/_headers`: HSTS, `X-Frame-Options: DENY`, CSP ketat `default-src 'none'` tanpa domain eksternal (font self-hosted), `nosniff`, `X-XSS-Protection: 0`, `Permissions-Policy`, COOP/CORP
 - `security.txt` (RFC 9116), Dependabot mingguan (npm + github-actions), workflow `security.yml` (audit + cek headers + build, Node 22)
 
 ## Catatan Desain

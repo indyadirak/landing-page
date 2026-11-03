@@ -34,7 +34,7 @@ export const copy = {
     title: 'Directory',
     portfolio: { description: 'Case Study: Segmented network architecture & stateful firewall security (MikroTik).', action: 'Explore portfolio' },
     blog: { description: 'Technical writing, CTF write-ups, and troubleshooting notes. (Indonesian only)', action: 'Read the blog' },
-    wiki: { description: 'Personal knowledge base on tools, systems, and security references. (Indonesian only)', action: 'Coming soon' },
+    wiki: { description: 'Personal knowledge base on tools, systems, and security references. (Indonesian only)', action: 'Open the wiki' },
     tools: { description: 'A collection of tools and security utilities I build and use.', action: 'Coming soon' },
   },
   links: {
