@@ -41,13 +41,28 @@ const navLabels = {
 
 // Escape "<" so static/config data can never break out of the JSON-LD
 // <script> block (e.g. a future value containing "</script>").
+const siteUrl = Astro.site ?? new URL('https://indyadirak.com');
+const personId = new URL('/#person', siteUrl).href;
+const websiteId = new URL('/#website', siteUrl).href;
 const jsonLd = JSON.stringify({
   '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: site.name,
-  jobTitle: site.role,
-  url: Astro.site,
-  sameAs: [site.github, site.linkedin],
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': personId,
+      name: site.name,
+      jobTitle: site.role,
+      url: new URL('/', siteUrl).href,
+      sameAs: [site.github, site.linkedin],
+    },
+    {
+      '@type': 'WebSite',
+      '@id': websiteId,
+      name: site.name,
+      url: new URL('/', siteUrl).href,
+      publisher: { '@id': personId },
+    },
+  ],
 }).replace(/</g, '\\u003c');
 ---
 
@@ -64,6 +79,9 @@ const jsonLd = JSON.stringify({
     <link rel="alternate" hreflang={alternateLocale} href={new URL(alternateUrl, Astro.site)} />
     <link rel="alternate" hreflang="x-default" href={new URL('/id/', Astro.site)} />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon-192x192.png" type="image/png" sizes="192x192" />
+    <link rel="icon" href="/favicon-512x512.png" type="image/png" sizes="512x512" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta property="og:site_name" content={site.name} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
